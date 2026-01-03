@@ -1,23 +1,19 @@
-{% extends 'base.html' %}
+'{% extends 'base.html' %}
 
-{% load static%}
+{% load static %}
 
-{% block content %} 
-        
-        <!-- Header-->
+{% block content %}
+       
+    
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Shop in style</h1>
-                    {% if user.is_authenticated %}
-                    <p class="lead fw-normal text-white-50 mb-0">Welcome to our shop! {{user.username}} We’re glad you’re here. Explore, shop with confidence, and enjoy the best deals made just for you.</p>
-                    {% endif %}
-                    
-
+                    <h1 class="display-4 fw-bolder">{{category}}</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">category page</p>
                 </div>
             </div>
         </header>
-        <!-- Section-->
+         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 
@@ -85,6 +81,8 @@
         </section>
 
 
-        {% endblock %}
+  
+
        
-      
+    
+{% endblock %}

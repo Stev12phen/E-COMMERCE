@@ -1,0 +1,52 @@
+'{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+       <center>
+         <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">About Us</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Learn more about our company and what we stand for.</p>
+                </div>
+            </div>
+        </header>
+        <section class="py-5">
+  <div class="container">
+    <h2 class="mb-4">About Us</h2>
+    
+    <p>Our mission is to make online shopping easy and fun for everyone.</p>
+    
+    <h3>Our Story</h3>
+    <p>Founded in 2023, we’ve grown from a small project to serving thousands of happy customers worldwide.</p>
+    
+    <h3>Our Values</h3>
+    <ul>
+      <li>Quality products</li>
+      <li>Customer-first approach</li>
+      <li>Transparency in everything we do</li>
+    </ul>
+    
+    <h3>Meet the Team</h3>
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <img src="{% static 'images/founder.jpg' %}" class="rounded-circle mb-2" alt="Founder" width="150">
+        <h5>Steve</h5>
+        <p>Founder & Developer</p>
+      </div>
+      <!-- add more team members -->
+    </div>
+  </div>
+</section>
+
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    <!-- About content goes here -->
+                </div>
+            </div>
+        </section>
+       </center>
+{% endblock %}'
