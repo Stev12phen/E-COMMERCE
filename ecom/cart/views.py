@@ -1,4 +1,9 @@
-from django.shortcuts import redirect, render, HttpResponse
+from django.shortcuts import redirect, render, HttpResponse, get_object_or_404
+from django.http import JsonResponse
+from .cart import Cart
+from store.models import Product
+
+
 
 
 def cart_summary(request):
@@ -6,7 +11,29 @@ def cart_summary(request):
 
 # Create your views here.
 def cart_add(request):
-    return HttpResponse('hello worlds')
+   #get the cart
+   cart= Cart(request)
+   #test for post
+   if request.POST.get('action')== 'post':
+       #get the staff
+       product_id= int(request.POST.get('product_id'))
+       #lookup the product in db
+       product= get_object_or_404(Product, id= product_id)
+       #save to session
+       cart.add(product= product)
+       #retuen a response
+
+       response= JsonResponse({'Product Name:':product})
+       return response 
+
+
+
+
+
+
+
+
+
 def cart_delete(request):
     pass
 def cart_update(request):

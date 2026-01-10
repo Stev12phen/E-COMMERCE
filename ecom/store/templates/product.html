@@ -14,10 +14,14 @@
       <div class="card-body">
         <center>
         <h5 class="card-title">{{product.name}}</h5>
-        <p class="card-text">{{product.description}}</p>
-        <p class="card-text"> <strike>{{product.price}}</strike> </p>
-        <p class="card-text"> {{product.sale_price}}</p>
+        <h6 class="card-text">{{product.description}}</h6>
+        <h6 class="card-text"> <strike>{{product.price}}</strike> </h6>
+        <h6 class="card-text"> {{product.sale_price}}</h6>
+        <h6>ID: {{product.id}}</h6>
+
         <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+        
+        <button class="btn btn-secondary " type="button" value="{{product.id}}" id="add_cart">Add to cart</button>
         </center>
       </div>
     </div>
@@ -26,3 +30,36 @@
 <br><br><br><br><br><br><br><br>
 
 {% endblock %}
+
+
+<script>
+
+
+$(document).on('click', 'add_cart', function(e){
+
+e.preventDefault();
+$.ajax({
+  type: 'POST',
+  url: "{% url 'add_cart' %}",
+
+  data:{
+    product_id: $('#add_cart').val(),
+    csrfmiddlewaretoken:'{{csrf_token}}',
+    action: 'post'
+
+  },
+  success:function(json){
+    console.log(json)
+  },
+  error: function(xhr, errmsg, err){
+     
+  }
+})
+
+
+
+})
+
+
+
+</script>
