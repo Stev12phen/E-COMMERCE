@@ -23,7 +23,10 @@ def cart_add(request):
        cart.add(product= product)
        #retuen a response
 
-       response= JsonResponse({'Product Name:':product})
+       cart_quantity= cart.__len__()
+       response= JsonResponse({'cart_quantity': cart_quantity})
+
+       response= JsonResponse({'Product Name:':product.name})
        return response 
 
 
