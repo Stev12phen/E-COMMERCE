@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+{% endblock %}
+
+
+
 {% block content %}
+
 <!-- Header -->
 <header class="bg-dark py-5">
     <div class="container px-4 px-lg-5 my-5">
@@ -11,7 +19,21 @@
         </div>
     </div>
 </header>
+<br><br><br><br>
+<center>
+    <div class="product-box">
+    Total Products: {{count}}
+</div>
 
-<!-- Centered Login Form -->
-<h2>Customer {{products.count}} </h2>
+<div class="product-box">
+    <h2>total categories: {{category_view}}</h2>
+</div>
+
+<br><br>
+<a href="{% url 'add_product' %}" class="btn btn-success">add product</a>
+
+</center>
+
+
+<br><br><br><br><br><br>
 {% endblock %}

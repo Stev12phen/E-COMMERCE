@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block extra_css %}
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+
+<center>
+    <h2>Add_product</h2>
+    <br><br>
+     <form action="" method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit"  class="btn btn-success">Add Product</button>
+    </form>
+   </center>
+
+
+<br><br><br><br><br><br>
+{% endblock %}

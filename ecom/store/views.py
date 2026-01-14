@@ -1,23 +1,18 @@
 from django.shortcuts import redirect, render, HttpResponse
-from.models import Product, Category, Customer
+from store.models import Product, Category, Customer
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from.forms import SignUpForm
+from.forms import SignUpForm, ProductForm
+
 
 
 
 
 # Create your views here
 
-def admin_view(request):
-    products= Product.objects.count()
-    categorys= Category.objects.count()
-    customers= Customer.objects.count()
-
-    return render(request, 'admin_view.html')
 
 
 
@@ -84,7 +79,33 @@ def category_view(request, foo):
         return redirect('home')
 
 
+def admins_page(request):
+    counts = Product.objects.count()
+    categories= Category.objects.count()
+    
+    context = {
+        'count': counts,
+        'category_view': categories,
+        
+        }
+    return render(request, 'admin_view.html', context)
 
+
+
+
+def add_product(request):
+    if request.method== 'POST':
+        form= ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "product added succeffully")
+            return redirect('admins_page')
+        else:
+            print(form.errors)
+            messages.error(request, "could not add the product")
+    else:
+        form= ProductForm()
+    return render(request, 'add_product.html', {'form':form})
 
 
 def logout_view(request):

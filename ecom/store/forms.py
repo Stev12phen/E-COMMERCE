@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
+from.models import Product
+
 
 class SignUpForm(UserCreationForm):
 	email = forms.EmailField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Email Address'}))
@@ -27,3 +29,35 @@ class SignUpForm(UserCreationForm):
 		self.fields['password2'].widget.attrs['class'] = 'form-control'
 		self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
 		self.fields['password2'].label = ''
+
+
+class ProductForm(forms.ModelForm):
+	class Meta:
+		model= Product
+		fields= '__all__'
+		widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'form-control mb-3',
+                'placeholder': 'Product name'
+            }),
+
+            'price': forms.NumberInput(attrs={
+                'class': 'form-control mb-3',
+                'placeholder': 'Price'
+            }),
+
+            'description': forms.Textarea(attrs={
+                'class': 'form-control mb-3',
+                'rows': 4,
+                'placeholder': 'Product description'
+            }),
+
+            'category': forms.Select(attrs={
+                'class': 'form-select mb-3'
+            }),
+
+            'image': forms.ClearableFileInput(attrs={
+                'class': 'form-control mb-3'
+            }),
+		}
+			

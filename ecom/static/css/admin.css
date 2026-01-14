@@ -1,0 +1,16 @@
+.product-box {
+    display: inline-block;          
+    padding: 30px 50px;             
+    border-radius: 15px;            
+    background: linear-gradient(135deg, #00FF00, #FF69B4, #FF0000); /* Green → Pink → Red */
+    color: rgb(26, 3, 3);                   
+    font-size: 2rem;                
+    font-weight:lighter;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+    transition: transform 0.3s ease; 
+}
+
+.product-box:hover {
+    transform: scale(1.05);         
+}
